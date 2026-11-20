@@ -138,3 +138,30 @@ footer span[role="img"] > * { display: none !important; }
   main > section:first-child p:not(.eyebrow) { font-size: 16px; margin-top: 18px; }
   main > section:first-child .mt-10 { margin-top: 26px; }
 }
+
+/* ---------- Owner Portal button ---------- */
+.ar-portal {
+  display: inline-block;
+  border: 1px solid var(--color-copper);
+  color: var(--color-ink);
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background .3s, color .3s;
+}
+.ar-portal:hover { background: var(--color-copper); color: #fff; }
+.ar-portal--menu { display: block; text-align: center; padding: 14px; margin-top: 12px; }
+@media (max-width: 639px) { body > header .ar-portal:not(.ar-portal--menu) { display: none; } }
+
+/* keep header items on one line; switch to the menu below 1180px like the home page */
+body > header > div.mx-auto > nav { gap: 26px !important; }
+body > header nav a, body > header a { white-space: nowrap; }
+body > header > div.mx-auto > nav a { font-size: 12px; letter-spacing: .1em; }
+@media (max-width: 1180px) {
+  body > header > div.mx-auto > nav { display: none !important; }
+  body > header > div.lg\:hidden { display: block !important; }
+  body > header button.lg\:hidden { display: block !important; }
+}

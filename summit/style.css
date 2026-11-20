@@ -58,3 +58,9 @@ form label .opt{display:inline}form .two label{white-space:nowrap}
 @media(prefers-reduced-motion:reduce){.heroImg{animation:none}}
 /* light green footer to match subpages */
 footer{background:#e9f0da;color:var(--soft)}footer .brand{color:var(--ink)}footer .brand small{color:var(--mute)}footer nav a:hover,footer .fmeta a:hover{color:var(--deep)}.fmeta a{color:var(--ink)}
+/* owner portal button */
+.portal{border:1px solid var(--copper);color:var(--ink);border-radius:999px;padding:11px 22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .3s,color .3s}.portal:hover{background:var(--copper);color:#fff}
+.menu div a.portal{font:12px Inter,sans-serif;letter-spacing:.12em;text-align:center;margin-top:10px;border:1px solid var(--copper);border-radius:999px;padding:12px 14px}
+@media(max-width:1180px){header>.portal{margin-left:auto}header>.portal+.cta{margin-left:0}}
+@media(max-width:650px){header>.portal{display:none}}
+header .brand{flex-shrink:0}.brand small{white-space:nowrap}header{gap:28px}header nav{gap:24px}
