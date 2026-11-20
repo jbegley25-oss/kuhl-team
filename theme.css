@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Ascent Realty theme overrides for the subpages
+   Palette: light green · light yellow · white · gold (deep green for text)
+   Loaded after the Next.js stylesheet on every subpage.
+   ========================================================================== */
+
+:root,
+:host {
+  --color-ink: #2f3b26;        /* deep forest green: text, buttons */
+  --color-ink-soft: #4a5a3c;
+  --color-ink-mute: #6c7860;
+  --color-copper: #c4a052;     /* gold */
+  --color-copper-deep: #977628;/* deep gold for accents */
+  --color-copper-wash: #f8f2d6;/* light yellow */
+  --color-bone: #fdfcf5;       /* warm white */
+  --color-mist: #eef4e2;       /* light green */
+  --color-sky: #e2ecd0;        /* light green, deeper */
+  --color-glacier: #d3e2bd;
+  --header-h: 80px;
+}
+
+body { background: var(--color-bone); }
+::selection { background: var(--color-copper); color: #fff; }
+
+/* ---------- Header: matches the home page (solid, logo left) ---------- */
+body > header {
+  background: #fdfcf5eb !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid #2f3b261a !important;
+  box-shadow: none !important;
+}
+body > header > div { height: var(--header-h); max-width: none; padding-left: 6%; padding-right: 6%; }
+
+/* replace the old stacked logo with the home-page logo */
+body > header a[aria-label^="Ascent Realty"] { margin-left: 0; padding: 0; display: block; }
+body > header a[aria-label^="Ascent Realty"] > span { display: none !important; }
+body > header a[aria-label^="Ascent Realty"]::before,
+footer span[role="img"]::before {
+  content: "ASCENT";
+  display: block;
+  padding-left: 58px;
+  font: 500 24px/1 var(--font-display);
+  letter-spacing: .14em;
+  color: var(--color-ink);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 75 46'%3E%3Cpath d='m2 41 23-31 9 12L46 4l27 37H48L31 18M19 41l20-28m1 16 8-11 16 23' fill='none' stroke='%23c4a052' stroke-width='2.2'/%3E%3C/svg%3E") left 6px / 46px auto no-repeat;
+  padding-top: 0;
+  min-height: 30px;
+}
+body > header a[aria-label^="Ascent Realty"]::after,
+footer span[role="img"]::after {
+  content: "REALTY · THE KUHL GROUP";
+  display: block;
+  padding-left: 58px;
+  margin-top: 0;
+  font: 500 8.5px/1 var(--font-sans);
+  letter-spacing: .28em;
+  color: var(--color-ink-mute);
+}
+
+/* nav + CTA */
+body > header nav a span:first-child { color: var(--color-ink-soft); }
+body > header nav a span.text-copper-deep { color: var(--color-copper-deep); }
+
+/* ---------- Photo hero on every subpage (sized like the home page) ---------- */
+main > section:first-child {
+  position: relative;
+  margin-top: var(--header-h);
+  min-height: min(86vh, 820px);
+  padding: 0 !important;
+  display: flex;
+  align-items: flex-end;
+  background: #c9d3b8 var(--hero-img, none) center 55% / cover no-repeat;
+  isolation: isolate;
+}
+/* drop the old gradient, sun glow and blue SVG mountains */
+main > section:first-child > .absolute,
+main > section:first-child > .pointer-events-none { display: none !important; }
+/* shade so text stays readable on any photo */
+main > section:first-child::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #0000 25%, #1c2414a6 100%),
+              linear-gradient(90deg, #1c241466 0%, #0000 65%);
+}
+main > section:first-child > .mx-auto {
+  max-width: none;
+  padding: 0 6% clamp(48px, 9vh, 88px);
+}
+main > section:first-child > .mx-auto > div { opacity: 1 !important; transform: none !important; }
+main > section:first-child .eyebrow { color: #fff; }
+main > section:first-child .eyebrow span { background: var(--color-copper); }
+main > section:first-child h1 {
+  color: #fff;
+  font-size: clamp(44px, 6.5vw, 96px);
+  line-height: .98;
+  text-shadow: 0 2px 24px #0003;
+}
+main > section:first-child h1 .text-copper-deep { color: #f3dc94; }
+main > section:first-child p:not(.eyebrow) { color: #ffffffe6; text-shadow: 0 1px 12px #0004; }
+main > section:first-child a.bg-ink {
+  background: var(--color-copper);
+  color: #1f2818;
+}
+main > section:first-child a.bg-ink:hover { background: #d4b46a; }
+
+/* ---------- Footer: light green instead of navy ---------- */
+footer.bg-ink {
+  --color-white: #2f3b26;      /* flips every text-white / white-alpha utility to deep green */
+  background: #e9f0da;
+  color: var(--color-ink);
+}
+footer.bg-ink > div:first-child { background: #f8f2d6; }
+footer .text-copper { color: var(--color-copper-deep); }
+footer input { background: #fff !important; }
+footer button[type="submit"] { background: var(--color-ink) !important; color: #fff !important; }
+footer button[type="submit"]:hover { background: var(--color-ink-soft) !important; }
+footer span[role="img"] { display: block; }
+footer span[role="img"] > * { display: none !important; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 650px) {
+  :root { --header-h: 66px; }
+  body > header > div { padding-left: 5%; padding-right: 5%; }
+  body > header a[aria-label^="Ascent Realty"]::before { font-size: 20px; padding-left: 48px; background-size: 38px auto; background-position: left 4px; min-height: 26px; }
+  body > header a[aria-label^="Ascent Realty"]::after { padding-left: 48px; font-size: 7.5px; }
+  main > section:first-child {
+    min-height: 78svh;
+    background-image: var(--hero-img-sm, var(--hero-img, none));
+  }
+  main > section:first-child > .mx-auto { padding: 0 5% 40px; }
+  main > section:first-child::before {
+    background: linear-gradient(180deg, #0000 10%, #1c2414b3 70%, #1c2414d9 100%);
+  }
+  main > section:first-child h1 { font-size: clamp(38px, 11vw, 52px); }
+  main > section:first-child p:not(.eyebrow) { font-size: 16px; margin-top: 18px; }
+  main > section:first-child .mt-10 { margin-top: 26px; }
+}
