@@ -64,3 +64,7 @@ footer{background:#e9f0da;color:var(--soft)}footer .brand{color:var(--ink)}foote
 @media(max-width:1180px){header>.portal{margin-left:auto}header>.portal+.cta{margin-left:0}}
 @media(max-width:650px){header>.portal{display:none}}
 header .brand{flex-shrink:0}.brand small{white-space:nowrap}header{gap:28px}header nav{gap:24px}
+/* three header buttons: collapse nav into the menu below 1400px */
+header>.portal+.portal{margin-left:-16px}
+@media(max-width:1400px){header nav{display:none}.menu{display:block}header>.portal{margin-left:auto}header>.portal+.portal{margin-left:-16px}header>.cta{margin-left:-16px}}
+@media(max-width:900px){header>.portal{display:none}header>.cta{margin-left:auto}}

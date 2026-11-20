@@ -37,15 +37,24 @@
   apply();
 
   // ---- Owner Portal button (header + mobile menu) ----
-  var PORTAL_URL = "#owner-portal"; // TODO: replace with the real owner portal link
+  var LINKS = [
+    ["Owner Portal", "https://ascentrealtycoloradollc.managebuilding.com/manager/app/accounting/rental-owner-financials"],
+    ["Apply to Rent", "https://ascentrealtycoloradollc.managebuilding.com/Resident/rental-application/new"]
+  ];
 
   function makePortal(extraClass) {
+    var frag = document.createDocumentFragment();
+    LINKS.forEach(function (l) { frag.appendChild(makeLink(l[0], l[1], extraClass)); });
+    return frag;
+  }
+
+  function makeLink(label, url, extraClass) {
     var a = document.createElement("a");
-    a.href = PORTAL_URL;
+    a.href = url;
     a.className = "ar-portal" + (extraClass ? " " + extraClass : "");
-    a.textContent = "Owner Portal";
+    a.textContent = label;
     a.setAttribute("data-portal", "");
-    if (/^https?:/.test(PORTAL_URL)) { a.target = "_blank"; a.rel = "noopener"; }
+    if (/^https?:/.test(url)) { a.target = "_blank"; a.rel = "noopener"; }
     return a;
   }
 
